@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container ml-3 mt-3">
+  <h1 class="mb-5"> New game </h1>
+  <ul class="list-inline">
+    <% @letters.each do |letter| %>
+      <li><%= letter %></li>
+    <% end %>
+  </ul>
+
+  <p class="mt-5"> What is the longest word you can find?</p>
+  <form action="/score" method="post">
+    <div class="form-row mt-3">
+      <div class="col">
+        <input type="text" class="form-control" name="word_proposal">
+      </div>
+      <div class="col">
+        <input type="submit" class="btn btn-light" value="Play">
+      </div>
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag "letters", @letters %>
+  </form>
+</div>
